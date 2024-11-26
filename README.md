@@ -10,6 +10,4 @@ Simple LaTex CV template.
 
 ## Example Images
 
-| Image 1 | Image 2 |
-|---------|---------|
-| ![Image 1](example/image1.png) | ![Image 2](example/image2.png) |
+| ![Page1 1](example/cv-page-1.png) | ![Page 2](example/cv-page-2.png) |

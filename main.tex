@@ -1,0 +1,112 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=0.7in}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{graphicx} % For including images
+\usepackage{fontspec} % For using system fonts
+\usepackage{paracol} % For creating multi-column layouts
+\usepackage{fontawesome5} % For using icons
+\usepackage{array} % For using m{} column type
+\usepackage[most]{tcolorbox} % For creating colored boxes
+\usepackage{xcolor} % For changing text color
+\usepackage{tikz} % For drawing shapes
+
+% Define ACCENT COLOR
+\definecolor{accentcolor}{RGB}{0, 114, 178}
+
+% Set the main font to Helvetica
+\setmainfont{Helvetica}
+
+% Custom commands for personal information
+\newcommand{\name}[2]{\textcolor{accentcolor}{\textbf{\LARGE #1 #2}}}
+\newcommand{\position}[1]{{\large #1}}
+\newcommand{\address}[1]{{#1}}
+\newcommand{\mobile}[1]{{#1}}
+\newcommand{\email}[1]{{\href{mailto:#1}{#1}}}
+\newcommand{\homepage}[1]{{\href{http://#1}{#1}}}
+\newcommand{\github}[1]{{\href{http://github.com/#1}{#1}}}
+\newcommand{\linkedin}[1]{{\href{http://linkedin.com/in/#1}{#1}}}
+\newcommand{\dateofbirth}[1]{{#1}}
+\newcommand{\residence}[1]{{#1}}
+\newcommand{\citizenship}[1]{{#1}}
+
+\pagestyle{empty} % Disable headers and footers
+
+\begin{document}
+
+    \sloppy % Allow LaTeX to adjust spacing to avoid overfull boxes
+
+    \columnratio{0.7, 0.3}
+    \begin{paracol}{2}
+        \begin{nthcolumn}{0}
+            \raggedright % Aligns the content of the minipage to the left
+            \vspace{0pt} % Aligns the top of the minipage with the top of the image
+            \name{John}{Doe} \\
+            \vspace{0.25cm} % Add vertical space between name and position
+            \position{AI Engineer} \\
+            \vspace{0.5cm}
+            \input{content/intro.tex}
+        \end{nthcolumn}
+        \begin{nthcolumn}{1}
+            \vspace{0pt} % Aligns the top of the minipage with the top of the text
+
+            % USE THIS FOR already rounded picture
+            \begin{tikzpicture}
+                \clip (0,0) circle (0.12\textwidth);
+                \node[anchor=center] at (0,0) {\includegraphics[width=0.2\textwidth]{profile-round.png}};
+                \draw[accentcolor, line width=4pt] (0,0) circle (0.11\textwidth); % Draw a accent color border around the image
+            \end{tikzpicture}  
+            
+        \end{nthcolumn}
+    \end{paracol}
+
+    \vspace{0.5cm} % Add some vertical space before the horizontal line
+    \makebox[0.94\textwidth][c]{\rule{\textwidth}{1pt}} % Center the horizontal line and set thickness
+
+    \vspace{0.5cm} % Add some vertical space before the columns
+
+    \columnratio{0.6, 0.4}
+    \begin{paracol}{2}
+        \setlength{\columnsep}{20pt} % Set the column separator width
+        \setlength{\columnseprule}{1pt} % Add a vertical rule between the columns
+
+        \begin{nthcolumn}{0}
+            \raggedright % Align the content to the left
+            \input{content/experience.tex}
+        \end{nthcolumn}
+
+        \begin{nthcolumn}{1}
+            \raggedright % Align the content to the left
+            \input{content/info.tex}
+            \vspace{0.1cm}
+            \input{content/skills.tex}
+            \vspace{0.1cm}
+            \input{content/language.tex}
+        \end{nthcolumn}
+    \end{paracol}
+
+    \vspace{0.5cm} % Add some vertical space after the columns
+    %\makebox[0.94\textwidth][c]{\rule{\textwidth}{1pt}} % Center the horizontal line and set thickness
+    \vspace{0.5cm}
+    
+    \newpage % USE FOR splitting the document for pagination
+
+    \columnratio{0.6, 0.4}
+    \begin{paracol}{2} % Create a two-column layout
+        \setlength{\columnsep}{20pt} % Set the column separator width
+        %\setlength{\columnseprule}{1pt} % Add a vertical rule between the columns
+
+        \begin{nthcolumn}{0} % Changed from 0 to 1 to ensure proper column usage
+            \raggedright % Align the content to the left
+            \input{content/education.tex}
+        \end{nthcolumn}
+
+        \begin{nthcolumn}{1}
+            \raggedright % Align the content to the left
+            \input{content/courses.tex}
+        \end{nthcolumn}
+    \end{paracol}
+
+\end{document}
